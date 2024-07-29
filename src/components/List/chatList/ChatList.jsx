@@ -6,7 +6,8 @@ import { doc, getDoc, onSnapshot, updateDoc } from "firebase/firestore";
 import { db } from "../../../Lib/firebase";
 import { useChatSotre } from "../../../Lib/chatStore";
 import { toast } from "react-toastify";
-const ChatList = () => {
+
+const ChatList = ({ setShow }) => {
   const [chats, setChats] = useState([]);
   const [addMode, setAddMode] = useState(false);
   const [input, setInput] = useState("");
@@ -38,6 +39,7 @@ const ChatList = () => {
   const handleSelect = async (chat) => {
     const userChats = chats.map((item) => {
       const { user, ...rest } = item;
+
       return rest;
     });
 
@@ -61,6 +63,7 @@ const ChatList = () => {
   const filteredChats = chats.filter((c) =>
     c.user.name.toLowerCase().includes(input.toLowerCase())
   );
+
   return (
     <div className="ChatList">
       <div className="search">
@@ -90,32 +93,40 @@ const ChatList = () => {
             }}
           >
             <div
-              className="item"
-              key={chat.chatId}
-              onClick={() => handleSelect(chat)}
+              onClick={() => {
+                setShow(false);
+              }}
             >
-              <img
-                src={
-                  chat.user.blocked.includes(currUser.id)
-                    ? "./blocked.png"
-                    : chat.user.avatar || "./avatar.png"
-                }
-                alt="Avatar"
-              />
-              <div className="texts">
-                <span style={{ fontWeight: "500", letterSpacing: "1px" }}>
-                  {chat.user.blocked.includes(currUser.id)
-                    ? "Unknown"
-                    : chat.user.name}
-                </span>
-                <p style={{ opacity: "0.6" }}>{chat.lastMessage}</p>
+              <div
+                className="item"
+                key={chat.chatId}
+                onClick={() => {
+                  handleSelect(chat);
+                }}
+              >
+                <img
+                  src={
+                    chat.user.blocked.includes(currUser.id)
+                      ? "./blocked.png"
+                      : chat.user.avatar || "./avatar.png"
+                  }
+                  alt="Avatar"
+                />
+                <div className="texts">
+                  <span style={{ fontWeight: "500", letterSpacing: "1px" }}>
+                    {chat.user.blocked.includes(currUser.id)
+                      ? "Unknown"
+                      : chat.user.name}
+                  </span>
+                  <p style={{ opacity: "0.6" }}>{chat.lastMessage}</p>
+                </div>
               </div>
             </div>
           </div>
         ))}
       </div>
 
-      {addMode && <AddUser />}
+      {addMode && <AddUser setAddMode={setAddMode} />}
     </div>
   );
 };

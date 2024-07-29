@@ -2,11 +2,11 @@ import ChatList from "./chatList/ChatList";
 import "./List.css";
 import UserInfo from "./userInfo/UserInfo";
 
-const List = () => {
+const List = ({ show, setShow }) => {
   return (
-    <div className="List">
+    <div className={`List ${show ? "" : "hidden"}`}>
       <UserInfo />
-      <ChatList />
+      <ChatList setShow={setShow} />
     </div>
   );
 };

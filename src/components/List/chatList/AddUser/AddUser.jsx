@@ -15,7 +15,7 @@ import { db } from "../../../../Lib/firebase";
 import { useState } from "react";
 import { useUserSotre } from "../../../../Lib/userStore";
 
-const AddUser = () => {
+const AddUser = ({ setAddMode }) => {
   const { currUser } = useUserSotre();
   const [user, setUser] = useState(null);
 
@@ -73,6 +73,7 @@ const AddUser = () => {
   return (
     <div className="AddUser">
       <form action="#" onSubmit={handleSearch}>
+        <span onClick={() => setAddMode(false)}> &#10060;</span>
         <input type="text" name="name" placeholder="Username..." />
         <button>Search</button>
       </form>

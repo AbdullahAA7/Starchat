@@ -12,6 +12,9 @@
     justify-content: space-between;
     border-bottom: 1px solid #dddddd35;
     background-color: rgb(44, 44, 44);
+    .arrow {
+      display: none;
+    }
     .user {
       display: flex;
       align-items: center;
@@ -38,16 +41,6 @@
           font-size: 0.8rem;
           font-weight: 300;
           color: #a5a5a5;
-        }
-
-        .icon {
-          display: flex;
-          gap: 10px;
-
-          img {
-            width: 1rem;
-            height: 1rem;
-          }
         }
       }
     }
@@ -83,7 +76,6 @@
 
     .message {
       display: flex;
-      gap: 10px;
 
       &.own {
         max-width: 70% !important;
@@ -196,6 +188,229 @@
         background-color: rgba(0, 92, 75, 0.667);
         cursor: not-allowed;
       }
+    }
+  }
+}
+@media (min-width: 150px) and (max-width: 1000px) {
+  .Chat {
+    .top {
+      padding: 10px;
+      .arrow {
+        width: 35px;
+        height: 35px;
+        font-size: 1.4rem;
+        font-weight: 900;
+        text-align: center;
+        margin-left: -0.4rem;
+        margin-right: -1rem;
+        display: inline-block;
+        padding: 0 5px 20px 5px;
+        border-radius: 50px;
+        background-color: rgba(255, 255, 255, 0.299);
+        &:hover {
+          background-color: rgba(255, 255, 255, 0.299);
+        }
+      }
+      .user {
+        gap: 5px;
+        img {
+          width: 40px;
+          height: 40px;
+        }
+        .texts {
+          gap: 0;
+          span {
+            font-size: 1rem;
+          }
+          p {
+            font-size: 0.55rem;
+          }
+        }
+      }
+      .icon {
+        gap: 20px;
+        img {
+          width: 1rem;
+          height: 1rem;
+        }
+      }
+    }
+    .center {
+      gap: 5px;
+
+      .message {
+        .texts {
+          p {
+            font-size: 0.8rem;
+          }
+        }
+        .texts {
+          img {
+            height: 170px;
+          }
+          p {
+            padding: 10px 15px;
+          }
+          span {
+            font-size: 0.6rem;
+            color: rgba(255, 255, 255, 0.587);
+          }
+        }
+      }
+    }
+    .bottom {
+      .icon {
+        gap: 10px;
+      }
+      img {
+        &.pic {
+          margin-left: 2rem;
+        }
+        &.cam,
+        &.mic {
+          display: none;
+        }
+      }
+      input {
+        padding: 0;
+        padding: 0 10px;
+      }
+      .emoji {
+        position: absolute;
+      }
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}
+@media (min-width: 480px) and (max-width: 799px) {
+  .Chat {
+    .top {
+      padding: 20px;
+      .arrow {
+        width: 40px;
+        height: 40px;
+        font-size: 1.8rem;
+        margin-right: -7rem;
+        margin-left: -1.3rem;
+      }
+      .user {
+        gap: 8px;
+        img {
+          width: 50px;
+          height: 50px;
+        }
+        .texts {
+          span {
+            font-size: 1.2rem;
+          }
+          p {
+            font-size: 0.55rem;
+          }
+        }
+      }
+      .icon {
+        gap: 20px;
+        img {
+          width: 1.2rem;
+          height: 1.2rem;
+        }
+      }
+    }
+    .center {
+      gap: 8px;
+
+      .message {
+        .texts {
+          p {
+            font-size: 0.9rem;
+          }
+        }
+        .texts {
+          p {
+            padding: 15px;
+          }
+          span {
+            font-size: 0.7rem;
+          }
+        }
+      }
+    }
+  }
+  .hidden {
+    display: none;
+  }
+}
+@media (min-width: 800px) and (max-width: 1000px) {
+  .Chat {
+    .top {
+      .arrow {
+        display: none;
+      }
+    }
+  }
+}
+@media (min-height: 650px) and (max-height: 720px) {
+  .Chat {
+    .center {
+      flex: 0.85;
+    }
+  }
+}
+@media (min-height: 720px) and (max-height: 799px) {
+  .Chat {
+    .center {
+      flex: 0.75;
+    }
+  }
+}
+@media (min-height: 800px) and (max-height: 849px) {
+  .Chat {
+    .center {
+      flex: 0.65;
+    }
+  }
+}
+@media (min-height: 850px) and (max-height: 900px) {
+  .Chat {
+    .center {
+      flex: 0.6;
+    }
+  }
+}
+@media (min-height: 901px) and (max-height: 1000px) {
+  .Chat {
+    .center {
+      flex: 0.57;
+    }
+  }
+}
+@media (min-height: 1000px) and (max-height: 1100px) {
+  .Chat {
+    .center {
+      flex: 0.48;
+    }
+  }
+}
+@media (min-height: 1100px) and (max-height: 1200px) {
+  .Chat {
+    .center {
+      flex: 0.43;
+    }
+  }
+}
+@media (min-height: 1200px) and (max-height: 1300px) {
+  .Chat {
+    .center {
+      flex: 0.4;
+    }
+  }
+}
+@media (min-height: 1300px) and (max-height: 1400px) {
+  .Chat {
+    .center {
+      flex: 0.36;
     }
   }
 }

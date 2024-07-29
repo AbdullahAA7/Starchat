@@ -23,7 +23,15 @@
     img {
       width: 1.2rem;
       height: 1.2rem;
-      cursor:pointer;
+      cursor: pointer;
+    }
+  }
+}
+@media (min-width: 150px) and (max-width: 323px) {
+  .UserInfo {
+    padding: 1.2rem 1rem;
+    .icon {
+      margin-right: 50px;
     }
   }
 }

@@ -10,11 +10,14 @@
   right: 0;
   left: 0;
   margin: auto;
-
   form {
     display: flex;
     gap: 20px;
-
+    span {
+      position: absolute;
+      top: 1px;
+      right: 1px;
+    }
     input {
       padding: 20px;
       border-radius: 10px;
@@ -58,6 +61,26 @@
       border: none;
       outline: none;
       border-radius: 10px;
+    }
+  }
+}
+@media (min-width: 150px) and (max-width: 400px) {
+  .AddUser {
+    padding: 20px;
+    bottom: 10rem;
+
+    form {
+      gap: 10px;
+
+      input {
+        padding: 5px 15px;
+        border-radius: 10px;
+        font-size: 1rem;
+      }
+      button {
+        padding: 10px;
+        font-size: 0.8rem;
+      }
     }
   }
 }

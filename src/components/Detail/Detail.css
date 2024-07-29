@@ -1,5 +1,4 @@
 .Detail {
-  flex: 1;
   .user {
     padding: 20px;
     display: flex;
@@ -12,6 +11,30 @@
       height: 80px;
       border-radius: 50%;
       object-fit: cover;
+    }
+    .info {
+      width: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      .btn {
+        font-size: 2rem;
+        font-weight: bolder;
+        position: absolute;
+        top: -4rem;
+        left: 20px;
+        background-color: rgba(255, 255, 255, 0.275);
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        text-align: center;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0 5px 0 5px;
+      }
     }
   }
   .info {
@@ -119,6 +142,41 @@
     .author-name {
       color: aqua;
       font-size: 1.4rem;
+    }
+  }
+}
+@media (min-width: 150px) and (max-width: 1300px) {
+  .Detail {
+    .user {
+      padding: 10px 0 0 0;
+      img {
+        width: 50px;
+        height: 50px;
+      }
+      h2 {
+        font-size: 1rem;
+        color: cyan;
+      }
+      .info {
+        p {
+          font-size: 0.8rem;
+          span {
+            &.you {
+              color: red;
+              font-size: 0.9rem;
+              font-weight: bold;
+            }
+            &.friend {
+              color: cyan;
+              font-size: 0.9rem;
+              font-weight: bold;
+            }
+          }
+        }
+      }
+    }
+    .author {
+      margin-top: 0;
     }
   }
 }

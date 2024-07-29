@@ -5,9 +5,9 @@ import { useChatSotre } from "../../Lib/chatStore";
 import { useUserSotre } from "../../Lib/userStore";
 import { arrayRemove, arrayUnion, doc, updateDoc } from "firebase/firestore";
 
-const Detail = () => {
+const Detail = ({ setDetail }) => {
   const [click, setClick] = useState(false);
-  const { chatId, user, isCurrUserBlocked, isReceiverBlocked, changeBlock } =
+  const { user, isCurrUserBlocked, isReceiverBlocked, changeBlock } =
     useChatSotre();
 
   const { currUser } = useUserSotre();
@@ -20,16 +20,27 @@ const Detail = () => {
         blocked: isReceiverBlocked ? arrayRemove(user.id) : arrayUnion(user.id),
       });
       changeBlock();
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
   return (
     <div className="Detail">
       <div className="user">
         <img src={user?.avatar || "./blocked.png"} alt="User Image" />
-        <h2>{user?.name}</h2>
-        <p>
-          Hi {currUser?.name}, I am {user?.name}
-        </p>
+        <h2 className="user-name">{user?.name}</h2>
+        <div className="info">
+          <p>
+            Hi <span className="you">{currUser?.name}</span>, I am{" "}
+            <span className="friend">{user?.name}</span> and this chating
+            website is created by Abdullah A.A by using React for best frontend
+            components and firebase for authentication, cloud sotrage and
+            Database. BTW if you want to chat with me click on above button!
+          </p>
+          <span className="btn" onClick={() => setDetail(false)}>
+            &#x2190;
+          </span>
+        </div>
       </div>
       <div className="info">
         <div className="option">

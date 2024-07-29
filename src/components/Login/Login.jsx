@@ -14,7 +14,7 @@ const Login = () => {
     file: null,
     url: "",
   });
-
+  const [login, setLogin] = useState(false);
   const [loading, setLoading] = useState(false);
 
   const handleAvatar = (e) => {
@@ -65,7 +65,7 @@ const Login = () => {
       await setDoc(doc(db, "userChats", res.user.uid), {
         chats: [],
       });
-      toast.success("You have signed up!You can login now");
+      toast.success("You can login now! Click on already have account");
     } catch (err) {
       console.log(err);
       toast.error(err.message);
@@ -75,45 +75,67 @@ const Login = () => {
   };
   return (
     <div className="Login">
-      <div className="item">
-        <h2>Welcome back to StarChat , Login here</h2>
-        <form action="#" onSubmit={handleLogin}>
-          <input type="email" placeholder="Enter email..." name="email" />
-          <input
-            type="password"
-            placeholder="Enter password..."
-            name="password"
-          />
-          <button disabled={loading}>
-            {loading ? "Loading..." : "Log In"}
-          </button>
-        </form>
-      </div>
-      <div className="line"></div>
-      <div className="item">
-        <h2>Welcome to StarChat , Signup here</h2>
-        <form onSubmit={handleSignup}>
-          <label htmlFor="file">
-            <img src={avatar.url || "./avatar.png"} alt="" /> Upload Image
-          </label>
-          <input
-            type="file"
-            id="file"
-            style={{ display: "none" }}
-            onChange={handleAvatar}
-          />
-          <input type="text" placeholder="Enter username..." name="name" />
-          <input type="email" placeholder="Enter email..." name="email" />
-          <input
-            type="password"
-            placeholder="Enter password..."
-            name="password"
-          />
-          <button disabled={loading}>
-            {loading ? "Loading..." : "Sign up"}
-          </button>
-        </form>
-      </div>
+      {login ? (
+        <div className="item">
+          <h2>Welcome back to StarChat , Login here</h2>
+          <form action="#" onSubmit={handleLogin}>
+            <input type="email" placeholder="Enter email..." name="email" />
+            <input
+              type="password"
+              placeholder="Enter password..."
+              name="password"
+            />
+            <button disabled={loading}>
+              {loading ? "Loading..." : "Log In"}
+            </button>
+            <a
+              style={{
+                color: "white",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+              onClick={() => setLogin(false)}
+            >
+              Create a new account
+            </a>
+          </form>
+        </div>
+      ) : (
+        <div className="item">
+          <h2>Welcome to StarChat , Signup here</h2>
+          <form onSubmit={handleSignup}>
+            <label htmlFor="file">
+              <img src={avatar.url || "./avatar.png"} alt="" /> Upload Image
+            </label>
+            <input
+              type="file"
+              id="file"
+              style={{ display: "none" }}
+              onChange={handleAvatar}
+            />
+            <input type="text" placeholder="Enter username..." name="name" />
+            <input type="email" placeholder="Enter email..." name="email" />
+            <input
+              type="password"
+              placeholder="Enter password..."
+              name="password"
+            />
+            <button disabled={loading}>
+              {loading ? "Loading..." : "Sign up"}
+            </button>
+            <a
+              style={{
+                color: "white",
+                textDecoration: "underline",
+                cursor: "pointer",
+              }}
+              onClick={() => setLogin(true)}
+            >
+              already have account?
+            </a>
+          </form>
+        </div>
+      )}
     </div>
   );
 };

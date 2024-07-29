@@ -17,6 +17,7 @@ img {
   overflow-y: scroll;
   overflow-x: hidden;
   background-color: rgb(44, 44, 44);
+
   .search {
     display: flex;
     align-items: center;
@@ -100,6 +101,42 @@ img {
       p {
         font-style: 0.8rem;
         font-weight: 300;
+      }
+    }
+  }
+}
+.hidden {
+  display: none;
+}
+@media (min-width: 150px) and (max-width: 323px) {
+  .ChatList {
+    .search {
+      gap: 0;
+      .search-bar {
+        flex: 0;
+        width: 70%;
+      }
+      .add-icon {
+        margin-right: 0;
+      }
+    }
+    .items {
+      align-items: flex-start;
+      .item-list {
+        width: 100vw;
+        .item {
+          align-items: flex-start;
+          width: 100vw;
+          img {
+            width: 2rem;
+            height: 2rem;
+          }
+          .texts {
+            p {
+              font-size: 0.8rem;
+            }
+          }
+        }
       }
     }
   }
