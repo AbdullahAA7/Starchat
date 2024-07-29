@@ -351,10 +351,3 @@
     }
   }
 }
-@media (min-height: 650px) and (max-height: 720px) {
-  .Chat {
-    .center {
-      flex: 0.85;
-    }
-  }
-}
